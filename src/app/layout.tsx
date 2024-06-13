@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import Icon from "@/components/Icon";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,61 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="grid h-screen grid-cols-[16rem_1fr]">
+          <div className="bg-gray-950 overflow-auto text-gray-50 p-4 flex w-full flex-col gap-4">
+            <div className="flex items-center gap-2">
+              <Icon icon="front-package" className="h-5 w-5" />
+              <span className="text-lg font-semibold">Open Sale POS</span>
+            </div>
+            <nav>
+              <ul className="space-y-1">
+                <li>
+                  <Link
+                    href="#"
+                    className="flex items-center gap-2 rounded-md px-3 py-2 hover:bg-gray-900 transition-colors"
+                    prefetch={false}
+                  >
+                    <Icon icon="diagnal-package" className="h-5 w-5" />
+                    <span className="text-sm font-medium">Products</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="flex items-center gap-2 rounded-md px-3 py-2 hover:bg-gray-900 transition-colors"
+                    prefetch={false}
+                  >
+                    <Icon icon="tag" className="h-5 w-5" />
+                    <span className="text-sm font-medium">Categories</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="flex items-center gap-2 rounded-md px-3 py-2 hover:bg-gray-900 transition-colors"
+                    prefetch={false}
+                  >
+                    <Icon icon="box" className="h-5 w-5" />
+                    <span className="text-sm font-medium">Stock</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="flex items-center gap-2 rounded-md px-3 py-2 hover:bg-gray-900 transition-colors"
+                    prefetch={false}
+                  >
+                    <Icon icon="money" className="h-5 w-5" />
+                    <span className="text-sm font-medium">Sales</span>
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div className="overflow-auto">{children}</div>
+        </div>
+      </body>
     </html>
   );
 }
