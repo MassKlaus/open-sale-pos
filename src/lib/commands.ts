@@ -19,12 +19,20 @@ export type commands = {
             name: string
         },
         return: number
+    },
+    create_tag_category: {
+        arg: {
+            categoryName: string
+        },
+        return: void
+    },
+    get_tag_categories: {
+        arg: void,
+        return: any[]
     }
 };
 
 export function command<T extends keyof commands>(cmd: T, args?: commands[T]['arg']): Promise<commands[T]['return']>
 {
-    console.log(args);
-    
     return invoke<commands[T]['return']>(cmd, args as InvokeArgs | undefined);
 }
